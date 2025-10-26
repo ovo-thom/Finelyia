@@ -123,8 +123,8 @@ export default function TransactionsTable({ showDelete, onDelete }) {
             <tbody>
               {filteredTransactions.map((transaction) => (
                 <tr key={transaction.id}>
-                  <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
-                    {transaction.date}
+                  <td>
+                    {new Date(transaction.date).toLocaleDateString("fr-FR")}
                   </td>
                   <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
                     {transaction.description}
