@@ -1,3 +1,5 @@
+import AuthButtons from "../Auth/AuthButtons";
+
 export default function Header() {
   return (
     <header className="w-full py-5 border-b-1 border-violet-600 text-black mb-5">
@@ -10,14 +12,7 @@ export default function Header() {
                 Gérez vos finances simplement et efficacement
               </p>
             </div>
-            <div className="flex gap-3">
-              <button className="font-semibold hover:underline">
-                Se connecter
-              </button>
-              <button className="text-black font-semibold border border-violet-600 px-3 py-1 rounded hover:bg-violet-600 duration-200 hover:text-gray-50">
-                S'inscrire
-              </button>
-            </div>
+            <AuthButtons />
           </div>
         </header>
   )

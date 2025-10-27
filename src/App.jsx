@@ -7,6 +7,8 @@ import TransactionsPage from "./TransactionsPage";
 import Paramètres from "./components/Settings";
 import { Toaster } from "react-hot-toast";
 import Header from "./components/Dashboard/Header";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<TransactionsPage />} />
           <Route path="/parametres" element={<Paramètres />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </div>
