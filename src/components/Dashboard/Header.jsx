@@ -6,7 +6,7 @@ export default function Header() {
               <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
                 Finelyia
               </h1>
-              <p className="text-sm md:text-base mt-2 font-light italic">
+              <p className="text-sm text-gray-600 md:text-base mt-2 font-light italic">
                 Gérez vos finances simplement et efficacement
               </p>
             </div>
