@@ -2,6 +2,7 @@ import StatCard from "./components/Dashboard/StatCard";
 import TransactionsTable from "./components/Dashboard/TransactionsTable";
 import { useTransactions } from "../src/contexts/TransactionsContext";
 import { toast } from "react-hot-toast";
+import AddTransactionButton from "./components/AddTransactionButton";
 
 export default function TransactionsPage() {
   const { transactions } = useTransactions();
@@ -15,7 +16,10 @@ export default function TransactionsPage() {
   const amount = transactions[0].montant;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="flex justify-end ">
+        <AddTransactionButton />
+      </div>
       <h2 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">
         Transactions
       </h2>

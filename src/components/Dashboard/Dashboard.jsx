@@ -2,6 +2,7 @@ import CategoryChart from "./CategoryChart";
 import TransactionsTable from "./TransactionsTable";
 import StatCard from "./StatCard";
 import { useTransactions } from "../../contexts/TransactionsContext";
+import AddTransactionButton from "../AddTransactionButton";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
@@ -15,6 +16,9 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl w-full mx-auto px-4">
+      <div className="flex justify-end mb-8">
+        <AddTransactionButton />
+      </div>
       <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6">
         Tableau de bord des finances personnelles
       </h1>

@@ -17,9 +17,6 @@ function App() {
       <Sidebar />
       <div className="flex-1 p-1 lg:p-8">
         <Header />
-        <div className="flex justify-end mb-8">
-          <AddTransactionButton />
-        </div>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<TransactionsPage />} />
