@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import TransactionsPage from "./TransactionsPage";
 import Paramètres from "./components/Settings";
 import { Toaster } from "react-hot-toast";
+import Header from "./components/Dashboard/Header";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Toaster />
       <Sidebar />
       <div className="flex-1 p-1 lg:p-8">
+        <Header />
         <div className="flex justify-end mb-8">
           <AddTransactionButton />
         </div>
