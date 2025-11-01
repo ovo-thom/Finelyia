@@ -9,14 +9,17 @@ import { Toaster } from "react-hot-toast";
 import Header from "./components/Dashboard/Header";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import { useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+  const hideHeaderOn = ["/login", "/register"];
   return (
     <div className="flex min-h-screen bg-[#fafbfe]">
       <Toaster />
       <Sidebar />
-      <div className="flex-1 p-1 lg:p-8">
-        <Header />
+      <div className="flex-1">
+        {!hideHeaderOn.includes(location.pathname) && <Header />}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<TransactionsPage />} />
