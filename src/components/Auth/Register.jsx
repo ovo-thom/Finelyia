@@ -14,7 +14,7 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEmailError(""); // Ajoute cette ligne
+    setEmailError(""); 
     setPasswordError("");
     let hasError = false;
 
