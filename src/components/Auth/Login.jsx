@@ -20,9 +20,13 @@ export default function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        setSuccess("Connexion réussie !");
+        setError("");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+
         const user = userCredential.user;
-        // ...
       })
       .catch((error) => {
         setError(error.message);
