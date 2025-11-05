@@ -1,9 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// TODO: Replace the following with your app's Firebase configuration
 const firebaseConfig = {
-  //...
+  apiKey: "AIzaSyBiziH62-2qeMCc8TWSJyySkiIRPw-fwII",
+  authDomain: "finelyia.firebaseapp.com",
+  projectId: "finelyia",
+  storageBucket: "finelyia.firebasestorage.app",
+  messagingSenderId: "490623344389",
+  appId: "1:490623344389:web:8f84acfa142ed0f548e16c",
 };
 
 const app = initializeApp(firebaseConfig);

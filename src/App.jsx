@@ -18,7 +18,7 @@ function App() {
     <div className="flex min-h-screen bg-[#fafbfe]">
       <Toaster />
       <Sidebar />
-      <div className="flex-1">
+      <div className={`flex-1 ${hideHeaderOn.includes(location.pathname) ? "" : "p-3 lg:p-8"}`}>
         {!hideHeaderOn.includes(location.pathname) && <Header />}
         <Routes>
           <Route path="/" element={<Dashboard />} />
