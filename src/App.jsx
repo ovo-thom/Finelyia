@@ -1,4 +1,3 @@
-import AddTransactionButton from "./components/AddTransactionButton";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Sidebar from "./components/Sidebar";
 import "./index.css";
@@ -10,25 +9,32 @@ import Header from "./components/Dashboard/Header";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import { useLocation } from "react-router-dom";
+import AuthProvider from "./components/Auth/AuthProvider";
 
 function App() {
   const location = useLocation();
   const hideHeaderOn = ["/login", "/register"];
   return (
-    <div className="flex min-h-screen bg-[#fafbfe]">
-      <Toaster />
-      <Sidebar />
-      <div className={`flex-1 ${hideHeaderOn.includes(location.pathname) ? "" : "p-3 lg:p-8"}`}>
-        {!hideHeaderOn.includes(location.pathname) && <Header />}
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/transactions" element={<TransactionsPage />} />
-          <Route path="/parametres" element={<Paramètres />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
+    <AuthProvider>
+      <div className="flex min-h-screen bg-[#fafbfe]">
+        <Toaster />
+        <Sidebar />
+        <div
+          className={`flex-1 ${
+            hideHeaderOn.includes(location.pathname) ? "" : "p-3 lg:p-8"
+          }`}
+        >
+          {!hideHeaderOn.includes(location.pathname) && <Header />}
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/transactions" element={<TransactionsPage />} />
+            <Route path="/parametres" element={<Paramètres />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 }
 
