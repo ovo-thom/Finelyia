@@ -1,6 +1,8 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { useTransactions } from "../../contexts/TransactionsContext";
+import { useContext } from "react";
+import { AuthContext } from "../Auth/AuthContext";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -14,25 +16,32 @@ const options = {
 };
 
 export default function CategoryChart() {
+  const { user } = useContext(AuthContext);
   const { transactions } = useTransactions();
 
-  const uniqueCategories = [...new Set(transactions.map((tx) => tx.categorie))];
+  const displayTransactions = user ? transactions : [];
+
+  const uniqueCategories = [
+    ...new Set(displayTransactions.map((tx) => tx.categorie)),
+  ];
   const sums = uniqueCategories.map((cat) =>
-    transactions
+    displayTransactions
       .filter((tx) => tx.categorie === cat)
       .reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0)
   );
 
-    const categoriesColors = {
+  const categoriesColors = {
     Salaire: "#4b2bc2", // bleu
     Logement: "#f7b731", // jaune
     Nourriture: "#2ecc71", // vert
     Transport: "#f76e11", // orange
     Loisir: "#7e21c9", // mauve
   };
-  const backgroundColors = uniqueCategories.map(cat => categoriesColors[cat] || "#e0e0e0");
+  const backgroundColors = uniqueCategories.map(
+    (cat) => categoriesColors[cat] || "#e0e0e0"
+  );
 
-  const isEmpty = transactions.length === 0;
+  const isEmpty = displayTransactions.length === 0;
   const data = isEmpty
     ? {
         labels: ["Aucune donnée"],
@@ -51,14 +60,11 @@ export default function CategoryChart() {
           {
             label: "Montant par catégorie",
             data: sums,
-            backgroundColor: 
-              backgroundColors,
+            backgroundColor: backgroundColors,
             borderWidth: 0,
           },
         ],
       };
-
-
 
   return (
     <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">
