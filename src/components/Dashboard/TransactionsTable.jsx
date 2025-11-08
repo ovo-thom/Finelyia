@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext";
 import { FiTrash2 } from "react-icons/fi";
+import { AuthContext } from "../Auth/AuthContext";
 
 export default function TransactionsTable({ showDelete, onDelete }) {
+  const { user } = useContext(AuthContext);
   const { transactions, deleteTransaction } = useTransactions();
   const [period, setPeriod] = useState("Ce mois-ci");
 
@@ -74,7 +76,9 @@ export default function TransactionsTable({ showDelete, onDelete }) {
     }
   };
 
-  const filteredTransactions = filterTransactions(transactions, period);
+  const filteredTransactions = user
+    ? filterTransactions(transactions, period)
+    : [];
 
   const handleDelete = (id) => {
     deleteTransaction(id);
@@ -121,40 +125,50 @@ export default function TransactionsTable({ showDelete, onDelete }) {
               </tr>
             </thead>
             <tbody>
-              {filteredTransactions.map((transaction) => (
-                <tr key={transaction.id}>
-                  <td>
-                    {new Date(transaction.date).toLocaleDateString("fr-FR")}
+              {filteredTransactions.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="text-center text-gray-400 py-8">
+                    {user
+                      ? "Aucune transaction à afficher"
+                      : "Connectez-vous pour voir vos transactions"}
                   </td>
-                  <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
-                    {transaction.description}
-                  </td>
-                  <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
-                    {transaction.categorie}
-                  </td>
-                  <td
-                    className={`border-b border-gray-100 px-3 md:px-4 py-2 text-left whitespace-nowrap font-semibold ${
-                      transaction.montant >= 0
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    {transaction.montant > 0 ? "+" : "-"}
-                    {Math.abs(transaction.montant).toLocaleString("fr-FR", {
-                      style: "currency",
-                      currency: "EUR",
-                    })}
-                  </td>
-                  {showDelete && (
-                    <td
-                      onClick={() => handleDelete(transaction.id)}
-                      className="text-lg cursor-pointer"
-                    >
-                      <FiTrash2 />
-                    </td>
-                  )}
                 </tr>
-              ))}
+              ) : (
+                filteredTransactions.map((transaction) => (
+                  <tr key={transaction.id}>
+                    <td>
+                      {new Date(transaction.date).toLocaleDateString("fr-FR")}
+                    </td>
+                    <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
+                      {transaction.description}
+                    </td>
+                    <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
+                      {transaction.categorie}
+                    </td>
+                    <td
+                      className={`border-b border-gray-100 px-3 md:px-4 py-2 text-left whitespace-nowrap font-semibold ${
+                        transaction.montant >= 0
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {transaction.montant > 0 ? "+" : "-"}
+                      {Math.abs(transaction.montant).toLocaleString("fr-FR", {
+                        style: "currency",
+                        currency: "EUR",
+                      })}
+                    </td>
+                    {showDelete && (
+                      <td
+                        onClick={() => handleDelete(transaction.id)}
+                        className="text-lg cursor-pointer"
+                      >
+                        <FiTrash2 />
+                      </td>
+                    )}
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
