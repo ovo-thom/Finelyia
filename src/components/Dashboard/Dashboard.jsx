@@ -3,12 +3,22 @@ import TransactionsTable from "./TransactionsTable";
 import StatCard from "./StatCard";
 import { useTransactions } from "../../contexts/TransactionsContext";
 import AddTransactionButton from "../AddTransactionButton";
+import { useContext } from "react";
+import { AuthContext } from "../Auth/AuthContext";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
+  const { user } = useContext(AuthContext);
 
-  const total = transactions.reduce((sum, tx) => sum + Number(tx.montant), 0);
-  const depenses = transactions.filter((depense) => depense.montant < 0);
+  const transactionsToDisplay = user ? transactions : [];
+
+  const total = transactionsToDisplay.reduce(
+    (sum, tx) => sum + Number(tx.montant),
+    0
+  );
+  const depenses = transactionsToDisplay.filter(
+    (depense) => depense.montant < 0
+  );
   const average = depenses.length
     ? depenses.reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0) /
       depenses.length
