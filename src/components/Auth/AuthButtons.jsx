@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 export default function AuthButtons() {
   return (
     <div className="flex items-center gap-3">
-      <Link to="/login" className="font-semibold hover:text-violet-600 duration-200">
+      <Link
+        to="/login"
+        className="font-semibold hover:text-violet-600 duration-200"
+      >
         Se connecter
       </Link>
       <Link

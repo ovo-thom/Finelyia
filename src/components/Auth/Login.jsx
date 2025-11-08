@@ -19,16 +19,37 @@ export default function Login() {
     e.preventDefault();
     setEmailError("");
     setPasswordError("");
+    let hasError = false;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Adresse e-mail invalide");
+      hasError = true;
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre."
+      );
+      hasError = true;
+    }
+
+    if (hasError) return;
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setSuccess("Connexion réussie !");
+        const user = userCredential.user;
+        setUser(user);
         setError("");
+        setEmailError("");
+        setPasswordError("");
+
+        setSuccess("Connexion réussie !");
+
         setTimeout(() => {
           navigate("/");
         }, 2000);
-
-        const user = userCredential.user;
       })
       .catch((error) => {
         setError(error.message);
