@@ -3,6 +3,7 @@ import { auth } from "../../firebase";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { setUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -52,7 +54,16 @@ export default function Login() {
         }, 2000);
       })
       .catch((error) => {
-        setError(error.message);
+        console.log("erreur Firebase", error.code, error.message);
+        if (
+          error.code === "auth/invalid-credential" ||
+          error.code === "auth/wrong-password" ||
+          error.code === "auth/user-not-found"
+        ) {
+          setError("Email ou mot de passe incorrect");
+        } else {
+          setError("Une erreur est survenue");
+        }
       });
   };
 
@@ -80,17 +91,31 @@ export default function Login() {
         />
         {emailError && <p className="text-red-600 mb-3">{emailError}</p>}
         <label htmlFor="password">Mot de passe</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Mot de passe"
-          className="border border-gray-300 px-3 py-2 mb-1 rounded outline-none focus:border focus:border-purple-600"
-          required
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Mot de passe"
+            className="border border-gray-300 px-3 py-2 mb-1 rounded outline-none focus:border focus:border-purple-600"
+            required
+          />
+          <span
+            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            onClick={() => setShowPassword((prev) => !prev)}
+            aria-label={
+              showPassword
+                ? "Masquer le mot de passe"
+                : "Afficher le mot de passe"
+            }
+            tabIndex={0}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
         {passwordError && <p className="text-red-600 mb-3">{passwordError}</p>}
-        <button className="text-white bg-purple-600 border hover:bg-white hover:text-black hover:border hover:border-purple-600 duration-200 cursor-pointer py-2 rounded">
+        <button className="text-white bg-purple-600 my-2 border hover:bg-white hover:text-black hover:border hover:border-purple-600 duration-200 cursor-pointer py-2 rounded">
           Se connecter
         </button>
         {error && <p className="text-red-600 mb-2">{error}</p>}
