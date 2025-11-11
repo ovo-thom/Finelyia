@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const { setUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -48,10 +50,11 @@ export default function Login() {
         setPasswordError("");
 
         setSuccess("Connexion réussie !");
+        setIsRedirecting(true);
 
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 3000);
       })
       .catch((error) => {
         console.log("erreur Firebase", error.code, error.message);
@@ -120,6 +123,12 @@ export default function Login() {
         </button>
         {error && <p className="text-red-600 mb-2">{error}</p>}
         {success && <p className="text-green-600 mb-2">{success}</p>}
+        {isRedirecting && (
+          <div className="flex justify-center items-center mt-2">
+            <ClipLoader color="#22c55e" size={30} />
+            <span className="ml-2 text-green-600">Redirection...</span>
+          </div>
+        )}
       </form>
     </div>
   );
