@@ -125,8 +125,8 @@ export default function Login() {
         {success && <p className="text-green-600 mb-2">{success}</p>}
         {isRedirecting && (
           <div className="flex justify-center items-center mt-2">
-            <ClipLoader color="#22c55e" size={30} />
-            <span className="ml-2 text-green-600">Redirection...</span>
+            <ClipLoader color="#2563eb" size={30} />
+            <span className="ml-2 text-indigo-600">Redirection...</span>
           </div>
         )}
       </form>

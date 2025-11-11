@@ -3,6 +3,7 @@ import { auth } from "../../firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,10 +47,11 @@ export default function Register() {
         setPasswordError("");
 
         setSuccess(`Bienvenue, ${user.email} !`);
+          setIsRedirecting(true);
 
         setTimeout(() => {
           navigate("/login");
-        }, 2000);
+        }, 3000);
       })
       .catch((error) => {
         setError(error.message);
@@ -108,6 +111,12 @@ export default function Register() {
         </button>
         {error && <p className="text-red-600 mb-2">{error}</p>}
         {success && <p className="text-green-600 mb-2">{success}</p>}
+        {isRedirecting && (
+          <div className="flex justify-center items-center mt-2">
+            <ClipLoader color="#2563eb" size={30} />
+            <span className="ml-2 text-indigo-600">Redirection...</span>
+          </div>
+        )}
       </form>
     </div>
   );
