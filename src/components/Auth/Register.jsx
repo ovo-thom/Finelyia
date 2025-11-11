@@ -47,7 +47,7 @@ export default function Register() {
         setPasswordError("");
 
         setSuccess(`Bienvenue, ${user.email} !`);
-          setIsRedirecting(true);
+        setIsRedirecting(true);
 
         setTimeout(() => {
           navigate("/login");
@@ -106,7 +106,7 @@ export default function Register() {
           </span>
         </div>
         {passwordError && <p className="text-red-600 mb-3">{passwordError}</p>}
-        <button className="text-white bg-purple-600 border my-2 hover:bg-white hover:text-black hover:border hover:border-purple-600 duration-200 cursor-pointer py-2 rounded">
+        <button className="text-white bg-[#4c2bc2] border my-2 hover:bg-white hover:text-black hover:border hover:border-[#4c2bc2] duration-200 cursor-pointer py-2 rounded">
           S'inscrire
         </button>
         {error && <p className="text-red-600 mb-2">{error}</p>}
