@@ -12,14 +12,17 @@ export default function Sidebar() {
       aria-label="Main navigation"
       className="min-h-screen w-20 md:w-72 bg-gradient-to-b from-[#4b2bc2] via-[#7e21c9] to-[#9f1dd9]"
     >
-      <div className="w-3/4 mx-auto">
-          <h1 className="text-2xl text-gray-900 md:text-3xl font-bold tracking-wide font-[Merriweather_Sans]">
-            Finelyia
-          </h1>
-          <p className="text-sm text-gray-300 md:text-base mt-2 font-light italic">
-            Gérez vos finances simplement et efficacement
-          </p>
-        </div>
+      <div className="w-3/4 mx-auto mt-5">
+        <h1
+          className="text-xl md:text-2xl font-semibold tracking-wide text-violet-100"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
+        >
+          Finelyia
+        </h1>
+        <p className="text-xs text-violet-200 md:text-sm mt-2 font-light italic">
+          Gérez vos finances simplement et efficacement
+        </p>
+      </div>
       <ul className="text-gray-100 w-3/4 mx-auto py-12">
         <li
           className={`flex items-center px-4 rounded-xl mb-5 py-2 cursor-pointer ${
