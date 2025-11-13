@@ -21,7 +21,7 @@ function App() {
         <Sidebar />
         <div
           className={`flex-1 ${
-            hideHeaderOn.includes(location.pathname) ? "" : "p-3 lg:p-8"
+            hideHeaderOn.includes(location.pathname) ? "" : "p-3"
           }`}
         >
           {!hideHeaderOn.includes(location.pathname) && <Header />}

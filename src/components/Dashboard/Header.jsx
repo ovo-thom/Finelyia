@@ -2,19 +2,18 @@ import AuthButtons from "../Auth/AuthButtons";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthContext";
 import { FaUser } from "react-icons/fa";
+import logo from "../../assets/Logo_Finelyia1.png";
 
 export default function Header() {
   const { user, setUser } = useContext(AuthContext);
   return (
     <header className="w-full pb-3 border-b-1 border-violet-600 text-black mb-6">
       <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl text-gray-900 md:text-3xl font-bold tracking-wide font-[Merriweather_Sans]">
-            Finelyia
-          </h1>
-          <p className="text-sm text-gray-600 md:text-base mt-2 font-light italic">
-            Gérez vos finances simplement et efficacement
-          </p>
+        <div className="flex items-center">
+          <div className="h-16 w-16">
+            <img src={logo} alt="Logo Finelyia" />
+          </div>
+          <span className="text-xl font-bold text-violet-900">Finelyia</span>
         </div>
         <div className="flex items-center gap-3">
           {user ? (
