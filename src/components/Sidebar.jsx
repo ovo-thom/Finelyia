@@ -14,12 +14,12 @@ export default function Sidebar() {
     >
       <div className="w-3/4 mx-auto mt-5">
         <h1
-          className="text-xl md:text-2xl font-semibold tracking-wide text-violet-100"
+          className="hidden md:block text-2xl font-semibold tracking-wide text-violet-100"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Finelyia
         </h1>
-        <p className="text-xs text-violet-200 md:text-sm mt-2 font-light italic">
+        <p className="hidden md:block text-violet-200 md:text-sm mt-2 font-light italic">
           Gérez vos finances simplement et efficacement
         </p>
       </div>

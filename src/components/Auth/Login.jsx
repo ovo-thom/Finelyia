@@ -75,7 +75,7 @@ export default function Login() {
     <div className="flex h-screen justify-center items-center bg-[#fafbfe]">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col border-gray-400 rounded-lg p-6 shadow-gray-300 shadow-lg mx-auto max-w-md"
+        className="flex flex-col border-gray-400 rounded-lg p-6 shadow-gray-300 shadow-lg mx-auto max-w-sm"
       >
         <div className="w-20 h-20 md:w-32 md:h-32 mx-auto mb-5">
           <img
@@ -97,7 +97,7 @@ export default function Login() {
             setEmailError("");
           }}
           placeholder="Adresse e-mail"
-          className="border border-gray-300 px-3 py-1 mb-1 rounded outline-none focus:border focus:border-purple-600"
+          className="border border-gray-300 px-3 py-2 mb-1 rounded outline-none focus:border focus:border-purple-600"
           required
         />
         {emailError && <p className="text-red-600 mb-3">{emailError}</p>}
