@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
-import logo from "../../assets/Logo_Finelyia1.png"
+import logo from "../../assets/Logo_Finelyia1.png";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -66,8 +66,12 @@ export default function Register() {
         className="flex flex-col border-gray-400 rounded-lg px p-6 shadow-gray-300 shadow-lg mx-auto max-w-md"
       >
         <div className="w-20 h-20 md:w-32 md:h-32 mx-auto mb-5">
-        <img src={logo} alt="logo" className="shadow-gray-300 shadow-lg rounded-lg" />
-      </div>
+          <img
+            src={logo}
+            alt="logo"
+            className="shadow-gray-300 shadow-lg rounded-lg"
+          />
+        </div>
         <h2 className="text-center mb-5 text-xl md:text-2xl font-semibold">
           Créer un compte
         </h2>
