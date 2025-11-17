@@ -31,11 +31,15 @@ export default function Sidebar() {
               : "hover:bg-white/10"
           }`}
         >
-          <span className="mr-3">
-            <MdSpaceDashboard className="text-2xl md:text-lg" />
-          </span>
-          <Link to="/" title="Tableau de bord" className="hidden md:inline">
-            Tableau de bord
+          <Link
+            to="/"
+            title="Tableau de bord"
+            className="flex items-center py-2"
+          >
+            <span className="mr-3">
+              <MdSpaceDashboard className="text-2xl md:text-lg" />
+            </span>
+            <span className="hidden md:inline">Tableau de bord</span>
           </Link>
         </li>
         <li
@@ -45,15 +49,15 @@ export default function Sidebar() {
               : "hover:bg-white/10"
           }`}
         >
-          <span className="mr-3">
-            <HiOutlineDocumentText className="text-2xl md:text-lg" />
-          </span>
           <Link
             to="/transactions"
             title="Transactions"
-            className="hidden md:inline"
+            className="flex items-center py-2"
           >
-            Transactions
+            <span className="mr-3">
+              <HiOutlineDocumentText className="text-2xl md:text-lg" />
+            </span>
+            <span className="hidden md:inline">Transactions</span>
           </Link>
         </li>
         <li
@@ -63,15 +67,15 @@ export default function Sidebar() {
               : "hover:bg-white/10"
           }`}
         >
-          <span className="mr-3">
-            <TbSettings className="text-2xl md:text-lg" />
-          </span>
           <Link
             to="/parametres"
             title="Paramètres"
-            className="hidden md:inline"
+            className="flex items-center py-2"
           >
-            Paramètres
+            <span className="mr-3">
+              <TbSettings className="text-2xl md:text-lg" />
+            </span>
+            <span className="hidden md:inline">Paramètres</span>
           </Link>
         </li>
       </ul>
