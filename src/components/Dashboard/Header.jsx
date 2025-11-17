@@ -13,7 +13,9 @@ export default function Header() {
           <div className="h-16 w-16">
             <img src={logo} alt="Logo Finelyia" />
           </div>
-          <span className="text-xl font-bold text-violet-900">Finelyia</span>
+          <span className="hidden md:block text-xl font-bold text-violet-900">
+            Finelyia
+          </span>
         </div>
         <div className="flex items-center gap-3">
           {user ? (
