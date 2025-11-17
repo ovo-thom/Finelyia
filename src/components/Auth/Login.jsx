@@ -72,7 +72,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen justify-center items-center bg-[#fafbfe]">
+    <div className="flex h-screen justify-center items-center mx-4 sm:px-0 bg-[#fafbfe]">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col border-gray-400 rounded-lg p-6 shadow-gray-300 shadow-lg mx-auto max-w-sm"
@@ -126,7 +126,7 @@ export default function Login() {
           </span>
         </div>
         {passwordError && <p className="text-red-600 mb-3">{passwordError}</p>}
-        <button className="text-white bg-purple-600 my-2 border hover:bg-white hover:text-black hover:border hover:border-purple-600 duration-200 cursor-pointer py-2 rounded">
+        <button className="text-white bg-purple-600 my-2 border hover:bg-white hover:text-black hover:border hover:border-purple-600 duration-200 cursor-pointer py-2 rounded w-full">
           Se connecter
         </button>
         {error && <p className="text-red-600 mb-2">{error}</p>}
