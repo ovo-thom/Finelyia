@@ -13,18 +13,18 @@ export default function Header() {
           <div className="h-16 w-16">
             <img src={logo} alt="Logo Finelyia" />
           </div>
-          <span className="hidden md:block text-xl font-bold text-violet-900">
+          <span className="hidden md:block md:mr-3 text-xl font-bold text-violet-900">
             Finelyia
           </span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {user ? (
             <>
-              <span className="mr-4 flex items-baseline gap-1 font-semibold text-sm">
+              <span className="flex items-baseline gap-1 font-semibold text-xs sm:text-sm">
                 <FaUser className="text-violet-600" /> {user.email}
               </span>
               <button
-                className="bg-violet-600 text-white cursor-pointer px-3 py-1 rounded hover:bg-violet-700"
+                className="bg-violet-600 text-white cursor-pointer text-xs font-semibold px-2 py-2 rounded hover:bg-violet-700 sm:text-sm sm:px-3 sm:py-2 whitespace-nowrap"
                 onClick={() => setUser(null)}
               >
                 Se déconnecter

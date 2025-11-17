@@ -17,7 +17,7 @@ export default function TransactionsPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4">
-      <div className="flex justify-end ">
+      <div className="flex justify-end mb-6">
         <AddTransactionButton />
       </div>
       <h2 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">

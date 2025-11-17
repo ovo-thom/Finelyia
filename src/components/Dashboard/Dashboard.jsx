@@ -26,7 +26,7 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl w-full mx-auto px-4">
-      <div className="flex justify-end mb-8">
+      <div className="flex justify-end mb-6">
         <AddTransactionButton />
       </div>
       <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6">
