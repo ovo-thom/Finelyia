@@ -17,7 +17,7 @@ export default function Header() {
             Finelyia
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 dark:text-white">
           {user ? (
             <>
               <span className="flex items-baseline gap-1 font-semibold text-xs sm:text-sm">

@@ -68,7 +68,7 @@ export default function CategoryChart() {
 
   return (
     <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">
-      <h2 className="font-semibold mb-4 text-left lg:text-lg">
+      <h2 className="font-semibold mb-4 text-left lg:text-lg dark:text-white">
         Dépenses par catégorie
       </h2>
       <div className="flex justify-center items-center w-full mt-2">
@@ -76,7 +76,7 @@ export default function CategoryChart() {
           <Pie data={data} options={options} />
         </div>
       </div>
-      <div className="flex flex-wrap justify-center gap-4 mt-4 w-full overflow-x-auto">
+      <div className="flex flex-wrap justify-center gap-4 mt-4 w-full overflow-x-auto dark:text-white">
         {data.labels.map((label, i) => (
           <div key={label} className="flex items-center gap-2 2xl:mt-5">
             <span

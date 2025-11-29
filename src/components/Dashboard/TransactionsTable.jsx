@@ -94,7 +94,7 @@ export default function TransactionsTable({ showDelete, onDelete }) {
         id="period"
         value={period}
         onChange={(e) => setPeriod(e.target.value)}
-        className="border-2 border-gray-300 px-3 py-2 w-36 md:w-56 rounded-lg ml-5 mt-5 outline-none focus:border-violet-500 bg-white"
+        className="border-2 border-gray-300 px-3 py-2 w-36 md:w-56 rounded-lg ml-5 mt-5 outline-none focus:border-violet-500 bg-white dark:text-white dark:bg-gray-800"
       >
         <option>Ce mois-ci</option>
         <option>Aujourd'hui</option>
@@ -106,7 +106,7 @@ export default function TransactionsTable({ showDelete, onDelete }) {
       <div className="mt-4 w-full">
         {/* Desktop/tablet view */}
         <div className="hidden sm:block overflow-x-auto xl:overflow-x-visible max-h-[300px] overflow-y-auto">
-          <table className="w-full min-w-0 table-auto bg-white rounded-xl shadow">
+          <table className="w-full min-w-0 table-auto bg-white rounded-xl shadow dark:text-white dark:bg-gray-800">
             <thead>
               <tr>
                 <th className="border-b border-gray-200 px-4 py-2 text-left">

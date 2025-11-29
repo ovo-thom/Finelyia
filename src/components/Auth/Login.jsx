@@ -72,10 +72,10 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen justify-center items-center mx-4 sm:px-0 bg-[#fafbfe]">
+    <div className="flex h-screen justify-center items-center mx-4 sm:px-0 bg-[#fafbfe] dark:text-white dark:bg-gray-900">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col border-gray-400 rounded-lg p-6 shadow-gray-300 shadow-lg mx-auto max-w-sm"
+        className="flex flex-col border-gray-400 rounded-lg p-6 shadow-gray-300 shadow-lg mx-auto max-w-sm dark:bg-gray-800"
       >
         <div className="w-20 h-20 md:w-32 md:h-32 mx-auto mb-5">
           <img

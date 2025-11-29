@@ -29,17 +29,17 @@ export default function Dashboard() {
       <div className="flex justify-end mb-6">
         <AddTransactionButton />
       </div>
-      <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6">
+      <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6 dark:text-white">
         Tableau de bord des finances personnelles
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-10 md:grid-rows-10 gap-8">
-        <div className="border-2 border-gray-300 md:col-span-6 md:row-span-7 bg-white rounded-xl p-4 h-full">
+        <div className="border-2 border-gray-300 md:col-span-6 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <TransactionsTable showDelete={false} />
         </div>
-        <div className="border-2 border-gray-300 md:col-span-4 md:row-span-7 bg-white rounded-xl p-4 h-full">
+        <div className="border-2 border-gray-300 md:col-span-4 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <CategoryChart />
         </div>
-        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full">
+        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <StatCard
             title="Solde total"
             value={total.toLocaleString("fr-FR", {
@@ -48,7 +48,7 @@ export default function Dashboard() {
             })}
           />
         </div>
-        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full">
+        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <StatCard
             title="Dépense moyenne"
             value={average.toLocaleString("fr-FR", {

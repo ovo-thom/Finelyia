@@ -20,10 +20,10 @@ export default function TransactionsPage() {
       <div className="flex justify-end mb-6">
         <AddTransactionButton />
       </div>
-      <h2 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">
+      <h2 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6 dark:text-white">
         Transactions
       </h2>
-      <div className="bg-white rounded-xl border-2 border-gray-300 p-4">
+      <div className="bg-white rounded-xl border-2 border-gray-300 p-4 dark:bg-gray-800 dark:text-white">
         <TransactionsTable
           showDelete={true}
           onDelete={() => toast.error("Transaction supprimée !")}
