@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { AppThemeContext } from "./MyThemeContext";
 
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
- console.log("EFFECT RUNNING, theme =", theme);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
   useEffect(() => {
+    localStorage.setItem("theme", theme);
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {

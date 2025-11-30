@@ -29,7 +29,7 @@ export default function Settings() {
           <label className="relative text-lg font-semibold inline-flex items-center cursor-pointer">
             Langues
           </label>
-          <select className="outline-none p-2 border-2 border-gray-300 rounded-xl focus:border-2 focus:border-purple-600">
+          <select className="outline-none p-2 border-2 border-gray-300 rounded-xl focus:border-2 focus:border-purple-600 dark:bg-gray-800">
             <option value="francais">Français</option>
             <option value="francais">Anglais</option>
           </select>
