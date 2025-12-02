@@ -7,5 +7,9 @@
   },
   "header": {
     "logout": "Se déconnecter"
+  },
+  "authbuttons": {
+    "login": "Se connecter",
+    "register": "S'inscrire"
   }
 }

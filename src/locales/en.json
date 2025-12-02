@@ -1,11 +1,15 @@
 {
-"sidebar": {
+  "sidebar": {
     "text": "Manage your finances simply and efficiently",
     "dashboard": "Dashboard",
     "transactions": "Transactions",
     "settings": "Settings"
   },
-"header": {
+  "header": {
     "logout": "Logout"
-}
+  },
+  "authbuttons": {
+    "login": "Login",
+    "register": "Register"
+  }
 }
