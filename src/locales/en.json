@@ -1,8 +1,11 @@
 {
-  "sidebar": {
-    "text": "Gérez vos finances simplement et efficacement",
-    "dashboard": "Tableau de bord",
+"sidebar": {
+    "text": "Manage your finances simply and efficiently",
+    "dashboard": "Dashboard",
     "transactions": "Transactions",
-    "settings": "Paramètres"
-  }
+    "settings": "Settings"
+  },
+"header": {
+    "logout": "Logout"
+}
 }

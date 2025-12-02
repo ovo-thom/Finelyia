@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthContext";
 import { FaUser } from "react-icons/fa";
 import logo from "../../assets/Logo_Finelyia1.png";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const { user, setUser } = useContext(AuthContext);
+  const { t } = useTranslation();
   return (
     <header className="w-full pb-3 border-b-1 border-violet-600 text-black mb-6">
       <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
@@ -27,7 +29,7 @@ export default function Header() {
                 className="bg-violet-600 text-white cursor-pointer text-xs font-semibold px-2 py-2 rounded hover:bg-violet-700 sm:text-sm sm:px-3 sm:py-2 whitespace-nowrap"
                 onClick={() => setUser(null)}
               >
-                Se déconnecter
+                {t("header.logout")}
               </button>
             </>
           ) : (

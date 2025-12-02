@@ -2,9 +2,11 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { TbSettings } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <aside
@@ -20,7 +22,7 @@ export default function Sidebar() {
           Finelyia
         </h1>
         <p className="hidden md:block text-violet-200 md:text-sm mt-2 font-light italic">
-          Gérez vos finances simplement et efficacement
+          {t("sidebar.text")}
         </p>
       </div>
       <ul className="text-gray-100 w-3/4 mx-auto py-12">
@@ -39,7 +41,7 @@ export default function Sidebar() {
             <span className="mr-3">
               <MdSpaceDashboard className="text-2xl md:text-lg" />
             </span>
-            <span className="hidden md:inline">Tableau de bord</span>
+            <span className="hidden md:inline">{t("sidebar.dashboard")}</span>
           </Link>
         </li>
         <li
@@ -57,7 +59,9 @@ export default function Sidebar() {
             <span className="mr-3">
               <HiOutlineDocumentText className="text-2xl md:text-lg" />
             </span>
-            <span className="hidden md:inline">Transactions</span>
+            <span className="hidden md:inline">
+              {t("sidebar.transactions")}
+            </span>
           </Link>
         </li>
         <li
@@ -75,7 +79,7 @@ export default function Sidebar() {
             <span className="mr-3">
               <TbSettings className="text-2xl md:text-lg" />
             </span>
-            <span className="hidden md:inline">Paramètres</span>
+            <span className="hidden md:inline">{t("sidebar.settings")}</span>
           </Link>
         </li>
       </ul>

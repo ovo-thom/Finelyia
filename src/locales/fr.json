@@ -4,5 +4,8 @@
     "dashboard": "Tableau de bord",
     "transactions": "Transactions",
     "settings": "Paramètres"
+  },
+  "header": {
+    "logout": "Se déconnecter"
   }
 }

@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppThemeContext } from "../contexts/MyThemeContext";
+import i18n from "../i18n";
 
 export default function Settings() {
   const { theme, setTheme } = useContext(AppThemeContext);
-  console.log("Settings ThemeContext:", AppThemeContext);
+  const [currentLang, setCurrentLang] = useState("fr");
 
   return (
     <div className="flex flex-col max-w-md w-full mx-auto">
@@ -29,9 +30,16 @@ export default function Settings() {
           <label className="relative text-lg font-semibold inline-flex items-center cursor-pointer">
             Langues
           </label>
-          <select className="outline-none p-2 border-2 border-gray-300 rounded-xl focus:border-2 focus:border-purple-600 dark:bg-gray-800">
-            <option value="francais">Français</option>
-            <option value="francais">Anglais</option>
+          <select
+            value={currentLang}
+            onChange={(e) => {
+              setCurrentLang(e.target.value);
+              i18n.changeLanguage(e.target.value);
+            }}
+            className="outline-none p-2 border-2 border-gray-300 rounded-xl focus:border-2 focus:border-purple-600 dark:bg-gray-800"
+          >
+            <option value="fr">Français</option>
+            <option value="en">Anglais</option>
           </select>
         </div>
       </div>
