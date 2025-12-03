@@ -11,5 +11,22 @@
   "authbuttons": {
     "login": "Login",
     "register": "Register"
+  },
+  "dashboard": {
+    "addTransactionsButtons": "Add expense / transaction",
+    "title": "Personal finance dashboard",
+    "transactionsTable": {
+      "thisMonth": "This month",
+      "today": "Today",
+      "thisWeek": "This week",
+      "lastMonth": "Last month",
+      "thisYear": "This year",
+      "date": "Date",
+      "description": "Description",
+      "category": "Category",
+      "amount": "Amount",
+      "noTransaction": "No transactions to display",
+      "loginToSee": "Log in to view your transactions"
+    }
   }
 }

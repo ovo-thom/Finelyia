@@ -5,10 +5,12 @@ import { useTransactions } from "../../contexts/TransactionsContext";
 import AddTransactionButton from "../AddTransactionButton";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
   const { user } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   const transactionsToDisplay = user ? transactions : [];
 
@@ -29,9 +31,9 @@ export default function Dashboard() {
       <div className="flex justify-end mb-6">
         <AddTransactionButton />
       </div>
-      <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6 dark:text-white">
-        Tableau de bord des finances personnelles
-      </h1>
+      <h2 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6 dark:text-white">
+        {t("dashboard.title")}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-10 md:grid-rows-10 gap-8">
         <div className="border-2 border-gray-300 md:col-span-6 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <TransactionsTable showDelete={false} />

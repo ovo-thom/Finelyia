@@ -11,5 +11,22 @@
   "authbuttons": {
     "login": "Se connecter",
     "register": "S'inscrire"
+  },
+  "dashboard": {
+    "addTransactionsButtons": "Ajouter dépense / transaction",
+    "title": "Tableau de bord des finances personnelles",
+    "transactionsTable": {
+      "thisMonth": "Ce mois-ci",
+      "today": "Aujourd'hui",
+      "thisWeek": "Cette semaine",
+      "lastMonth": "Le mois dernier",
+      "thisYear": "Cette année",
+      "date": "Date",
+      "description": "Description",
+      "category": "Catégorie",
+      "amount": "Montant",
+      "noTransaction": "Aucune transaction à afficher",
+      "loginToSee": "Connectez-vous pour voir vos transactions"
+    }
   }
 }

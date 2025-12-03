@@ -2,11 +2,13 @@ import { useState, useContext } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext";
 import { FiTrash2 } from "react-icons/fi";
 import { AuthContext } from "../Auth/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function TransactionsTable({ showDelete, onDelete }) {
   const { user } = useContext(AuthContext);
   const { transactions, deleteTransaction } = useTransactions();
   const [period, setPeriod] = useState("Ce mois-ci");
+  const { t } = useTranslation();
 
   const filterTransactions = (transactions, period) => {
     const today = new Date();
@@ -96,11 +98,11 @@ export default function TransactionsTable({ showDelete, onDelete }) {
         onChange={(e) => setPeriod(e.target.value)}
         className="border-2 border-gray-300 px-3 py-2 w-36 md:w-56 rounded-lg ml-5 mt-5 outline-none focus:border-violet-500 bg-white dark:text-white dark:bg-gray-800"
       >
-        <option>Ce mois-ci</option>
-        <option>Aujourd'hui</option>
-        <option>Cette semaine</option>
-        <option>Le mois dernier</option>
-        <option>Cette année</option>
+        <option>{t("dashboard.transactionsTable.thisMonth")}</option>
+        <option>{t("dashboard.transactionsTable.today")}</option>
+        <option>{t("dashboard.transactionsTable.thisWeek")}</option>
+        <option>{t("dashboard.transactionsTable.lastMonth")}</option>
+        <option>{t("dashboard.transactionsTable.thisYear")}</option>
       </select>
 
       <div className="mt-4 w-full">
@@ -110,16 +112,16 @@ export default function TransactionsTable({ showDelete, onDelete }) {
             <thead>
               <tr>
                 <th className="border-b border-gray-200 px-4 py-2 text-left">
-                  Date
+                  {t("dashboard.transactionsTable.date")}
                 </th>
                 <th className="border-b border-gray-200 px-4 py-2 text-left">
-                  Description
+                  {t("dashboard.transactionsTable.description")}
                 </th>
                 <th className="border-b border-gray-200 px-4 py-2 text-left">
-                  Catégorie
+                  {t("dashboard.transactionsTable.category")}
                 </th>
                 <th className="border-b border-gray-200 px-4 py-2 text-left">
-                  Montant
+                  {t("dashboard.transactionsTable.amount")}
                 </th>
                 <th className="border-b border-gray-200 px-4 py-2 text-left"></th>
               </tr>
@@ -129,8 +131,8 @@ export default function TransactionsTable({ showDelete, onDelete }) {
                 <tr>
                   <td colSpan={5} className="text-center text-gray-400 py-8">
                     {user
-                      ? "Aucune transaction à afficher"
-                      : "Connectez-vous pour voir vos transactions"}
+                      ? t("dashboard.transactionsTable.noTransaction")
+                      : t("dashboard.transactionsTable.loginToSee")}
                   </td>
                 </tr>
               ) : (
@@ -196,18 +198,20 @@ export default function TransactionsTable({ showDelete, onDelete }) {
               <div className="flex flex-col gap-1">
                 <div>
                   <span className="text-xs text-gray-500 mr-1">
-                    Description:{" "}
+                    {t("dashboard.transactionsTable.description")}:{" "}
                   </span>
                   <span className="font-medium">{transaction.description}</span>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500 mr-1">
-                    Catégorie:{" "}
+                    {t("dashboard.transactionsTable.category")}:{" "}
                   </span>
                   <span className="font-medium">{transaction.categorie}</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 mr-1">Montant: </span>
+                  <span className="text-xs text-gray-500 mr-1">
+                    {t("dashboard.transactionsTable.amount")}:{" "}
+                  </span>
                   <span
                     className={`font-semibold ${
                       transaction.montant >= 0
