@@ -3,6 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useTransactions } from "../contexts/TransactionsContext";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export default function Modal({ onClose }) {
   const [montant, setMontant] = useState("");
@@ -11,6 +12,7 @@ export default function Modal({ onClose }) {
   const [description, setDescription] = useState("");
   const { addTransaction } = useTransactions();
   const [type, setType] = useState("revenu");
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ export default function Modal({ onClose }) {
       type,
     };
     addTransaction(transaction);
-    toast.success("Transaction ajoutée !");
+    toast.success(t("dashboard.modal.success"));
     onClose();
   };
 
@@ -40,7 +42,7 @@ export default function Modal({ onClose }) {
         >
           <div className="flex justify-between items-center">
             <h3 className="text-xl md:text-2xl font-semibold">
-              Ajouter une transaction
+              {t("dashboard.modal.title")}
             </h3>
             <span
               onClick={onClose}
@@ -50,7 +52,7 @@ export default function Modal({ onClose }) {
             </span>
           </div>
           <div className="my-5">
-            <p className="mb-2">Type</p>
+            <p className="mb-2">{t("dashboard.modal.type")}</p>
             <button
               type="button"
               onClick={() => setType("revenu")}
@@ -60,7 +62,7 @@ export default function Modal({ onClose }) {
                   : "bg-white text-gray-800 border-gray-300"
               }`}
             >
-              Revenu
+              {t("dashboard.modal.income")}
             </button>
             <button
               type="button"
@@ -71,25 +73,25 @@ export default function Modal({ onClose }) {
                   : "bg-white text-gray-800 border-gray-300"
               }`}
             >
-              Dépense
+              {t("dashboard.modal.expense")}
             </button>
           </div>
           <div className="flex flex-col mb-2">
-            <label htmlFor="montant">Montant</label>
+            <label htmlFor="montant">{t("dashboard.modal.amount")}</label>
             <input
               type="text"
               id="montant"
               value={montant}
               onChange={(e) => setMontant(e.target.value)}
-              placeholder="ex: -45,00 €"
+              placeholder="ex: 45,00 €"
               className="border-2 border-gray-300 rounded-xl p-1 outline-none"
             />
-            <p className="opacity-0">
-              Montant positif = revenu, négatif = dépense
+            <p className="text-xs text-gray-500 mt-1">
+              {t("dashboard.modal.amountHelp")}
             </p>
           </div>
           <div className="flex flex-col mb-3">
-            <label htmlFor="categorie">Catégorie</label>
+            <label htmlFor="categorie">{t("dashboard.modal.category")}</label>
             <select
               id="categorie"
               name="categorie"
@@ -97,16 +99,26 @@ export default function Modal({ onClose }) {
               onChange={(e) => setCategorie(e.target.value)}
               className="border-2 border-gray-300 rounded-xl p-1 outline-none"
             >
-              <option value="">Choisir une catégorie</option>
-              <option value="Nourriture">Nourriture</option>
-              <option value="Logement">Logement</option>
-              <option value="Transport">Transport</option>
-              <option value="Salaire">Salaire</option>
-              <option value="Loisir">Loisir</option>
+              <option value="">{t("dashboard.modal.chooseCategory")}</option>
+              <option value="Nourriture">
+                {t("dashboard.modal.categories.Nourriture")}
+              </option>
+              <option value="Logement">
+                {t("dashboard.modal.categories.Logement")}
+              </option>
+              <option value="Transport">
+                {t("dashboard.modal.categories.Transport")}
+              </option>
+              <option value="Salaire">
+                {t("dashboard.modal.categories.Salaire")}
+              </option>
+              <option value="Loisir">
+                {t("dashboard.modal.categories.Loisir")}
+              </option>
             </select>
           </div>
           <div className="flex flex-col mb-3">
-            <label htmlFor="date">Date</label>
+            <label htmlFor="date">{t("dashboard.modal.date")}</label>
             <input
               type="date"
               value={date}
@@ -116,7 +128,9 @@ export default function Modal({ onClose }) {
             />
           </div>
           <div className="flex flex-col mb-3">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">
+              {t("dashboard.modal.description")}
+            </label>
             <input
               type="text"
               value={description}
@@ -130,10 +144,10 @@ export default function Modal({ onClose }) {
               onClick={onClose}
               className="border-2 border-gray-300 rounded-xl py-1 px-4 cursor-pointer"
             >
-              Annuler
+              {t("dashboard.modal.cancel")}
             </button>
             <button className="border-2 rounded-xl py-1 px-12 sm:px-16 md:px-20 bg-[#119560] text-gray-50 border-transparent cursor-pointer">
-              Ajouter
+              {t("dashboard.modal.add")}
             </button>
           </div>
         </form>

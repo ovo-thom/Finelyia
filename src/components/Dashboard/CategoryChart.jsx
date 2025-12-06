@@ -85,7 +85,7 @@ export default function CategoryChart() {
               className="inline-block w-3 h-3 rounded-full"
               style={{ background: data.datasets[0].backgroundColor[i] }}
             ></span>
-            <span className="text-xs 2xl:text-sm">{label}</span>
+            <span className="text-xs 2xl:text-sm">{t(`dashboard.modal.categories.${label}`)}</span>
           </div>
         ))}
       </div>

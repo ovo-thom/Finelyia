@@ -14,6 +14,28 @@
   },
   "dashboard": {
     "addTransactionsButtons": "Add expense / transaction",
+    "modal": {
+      "title": "Add a transaction",
+      "type": "Type",
+      "income": "Income",
+      "expense": "Expense",
+      "amount": "Amount",
+      "amountHelp": "Positive amount = income, negative = expense",
+      "category": "Category",
+      "chooseCategory": "Choose a category",
+      "date": "Date",
+      "description": "Description",
+      "cancel": "Cancel",
+      "add": "Add",
+      "success": "Transaction added!",
+      "categories": {
+        "Nourriture": "Food",
+        "Logement": "Housing",
+        "Transport": "Transport",
+        "Salaire": "Salary",
+        "Loisir": "Leisure"
+      }
+    },
     "title": "Personal finance dashboard",
     "transactionsTable": {
       "thisMonth": "This month",

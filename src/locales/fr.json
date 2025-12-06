@@ -14,6 +14,28 @@
   },
   "dashboard": {
     "addTransactionsButtons": "Ajouter dépense / transaction",
+    "modal": {
+      "title": "Ajouter une transaction",
+      "type": "Type",
+      "income": "Revenu",
+      "expense": "Dépense",
+      "amount": "Montant",
+      "amountHelp": "Montant positif = revenu, négatif = dépense",
+      "category": "Catégorie",
+      "chooseCategory": "Choisir une catégorie",
+      "date": "Date",
+      "description": "Description",
+      "cancel": "Annuler",
+      "add": "Ajouter",
+      "success": "Transaction ajoutée !",
+      "categories": {
+        "Nourriture": "Nouriture",
+        "Logement": "Logement",
+        "Transport": "Transport",
+        "Salaire": "Salaire",
+        "Loisir": "Loisir"
+      }
+    },
     "title": "Tableau de bord des finances personnelles",
     "transactionsTable": {
       "thisMonth": "Ce mois-ci",
