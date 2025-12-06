@@ -3,6 +3,7 @@ import { Pie } from "react-chartjs-2";
 import { useTransactions } from "../../contexts/TransactionsContext";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthContext";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,6 +19,7 @@ const options = {
 export default function CategoryChart() {
   const { user } = useContext(AuthContext);
   const { transactions } = useTransactions();
+    const { t } = useTranslation();
 
   const displayTransactions = user ? transactions : [];
 
@@ -69,7 +71,7 @@ export default function CategoryChart() {
   return (
     <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">
       <h2 className="font-semibold mb-4 text-left lg:text-lg dark:text-white">
-        Dépenses par catégorie
+        {t("dashboard.categoryChart.title")}
       </h2>
       <div className="flex justify-center items-center w-full mt-2">
         <div className="w-36 h-36 lg:w-56 lg:h-56 2xl:w-80 2xl:h-80">

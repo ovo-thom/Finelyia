@@ -27,6 +27,9 @@
       "amount": "Montant",
       "noTransaction": "Aucune transaction à afficher",
       "loginToSee": "Connectez-vous pour voir vos transactions"
+    },
+    "categoryChart": {
+      "title": "Dépenses par catégorie"
     }
   }
 }

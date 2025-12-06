@@ -27,6 +27,9 @@
       "amount": "Amount",
       "noTransaction": "No transactions to display",
       "loginToSee": "Log in to view your transactions"
+    },
+    "categoryChart": {
+      "title": "Expenses by category"
     }
   }
 }
