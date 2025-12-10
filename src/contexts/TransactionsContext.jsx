@@ -1,24 +1,43 @@
-import { createContext, useContext } from "react";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthContext } from "../components/Auth/AuthContext";
 
 const TransactionsContext = createContext();
 
 export function TransactionsProvider({ children }) {
-  const [transactions, setTransactions] = useLocalStorage("transactions", []);
+  const auth = useContext(AuthContext);
+  const user = auth && auth.user ? auth.user : null;
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      const key = `transactions_${user.email}`;
+      const saved = JSON.parse(localStorage.getItem(key)) || [];
+      setTransactions(saved);
+    } else {
+      setTransactions([]);
+    }
+  }, [user]);
 
   const addTransaction = (transaction) => {
+    if (!user) return;
+    const key = `transactions_${user.email}`;
     const newTransaction = {
       id: transaction.id ?? Date.now().toString(),
       ...transaction,
     };
-    setTransactions((prev) => [newTransaction, ...prev]);
+    const updated = [newTransaction, ...transactions];
+    setTransactions(updated);
+    localStorage.setItem(key, JSON.stringify(updated));
   };
 
   const deleteTransaction = (id) => {
-    setTransactions((prev) =>
-      prev.filter((transaction) => transaction.id !== id)
-    );
+    if (!user) return;
+    const key = `transactions_${user.email}`;
+    const updated = transactions.filter((transaction) => transaction.id !== id);
+    setTransactions(updated);
+    localStorage.setItem(key, JSON.stringify(updated));
   };
+
   return (
     <TransactionsContext.Provider
       value={{ transactions, addTransaction, deleteTransaction }}

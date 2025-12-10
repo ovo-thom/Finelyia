@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -15,10 +15,16 @@ export default function AuthProvider({ children }) {
     return () => unsubscribe();
   }, []);
 
+  const logout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+    localStorage.removeItem("transactions");
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
-

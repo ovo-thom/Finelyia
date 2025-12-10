@@ -11,32 +11,35 @@ import Register from "./components/Auth/Register";
 import { useLocation } from "react-router-dom";
 import AuthProvider from "./components/Auth/AuthProvider";
 import ThemeProvider from "./contexts/ThemeProvider";
+import { TransactionsProvider } from "./contexts/TransactionsContext";
 
 function App() {
   const location = useLocation();
   const hideHeaderOn = ["/login", "/register"];
   return (
     <AuthProvider>
-      <ThemeProvider>
-        <div className="flex min-h-screen">
-          <Toaster />
-          <Sidebar />
-          <div
-            className={`flex-1 dark:bg-gray-900 ${
-              hideHeaderOn.includes(location.pathname) ? "" : "p-3"
-            }`}
-          >
-            {!hideHeaderOn.includes(location.pathname) && <Header />}
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/transactions" element={<TransactionsPage />} />
-              <Route path="/parametres" element={<Paramètres />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Routes>
+      <TransactionsProvider>
+        <ThemeProvider>
+          <div className="flex min-h-screen">
+            <Toaster />
+            <Sidebar />
+            <div
+              className={`flex-1 dark:bg-gray-900 ${
+                hideHeaderOn.includes(location.pathname) ? "" : "p-3"
+              }`}
+            >
+              {!hideHeaderOn.includes(location.pathname) && <Header />}
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/transactions" element={<TransactionsPage />} />
+                <Route path="/parametres" element={<Paramètres />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </ThemeProvider>
+        </ThemeProvider>
+      </TransactionsProvider>
     </AuthProvider>
   );
 }
