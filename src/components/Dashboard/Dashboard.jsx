@@ -43,7 +43,7 @@ export default function Dashboard() {
         </div>
         <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <StatCard
-            title="Solde total"
+            title={t("dashboard.statCard.totalBalance")}
             value={total.toLocaleString("fr-FR", {
               style: "currency",
               currency: "EUR",
@@ -52,7 +52,7 @@ export default function Dashboard() {
         </div>
         <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
           <StatCard
-            title="Dépense moyenne"
+            title={t("dashboard.statCard.averageExpenditure")}
             value={average.toLocaleString("fr-FR", {
               style: "currency",
               currency: "EUR",

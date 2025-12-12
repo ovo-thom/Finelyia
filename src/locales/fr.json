@@ -52,6 +52,10 @@
     },
     "categoryChart": {
       "title": "Dépenses par catégorie"
+    },
+    "statCard": {
+      "totalBalance": "Solde total",
+      "averageExpenditure": "Dépense moyenne"
     }
   }
 }
