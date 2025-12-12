@@ -57,5 +57,10 @@
       "totalBalance": "Solde total",
       "averageExpenditure": "Dépense moyenne"
     }
+  },
+  "transactionsPage": {
+    "title": "Transactions",
+    "lastTransactions": "Dernière transaction",
+    "amount": "Montant"
   }
 }

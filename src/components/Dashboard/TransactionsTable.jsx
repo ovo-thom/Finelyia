@@ -44,7 +44,6 @@ export default function TransactionsTable({ showDelete, onDelete }) {
       case "Ce mois-ci":
         return transactions.filter((tx) => {
           const txDate = new Date(tx.date);
-          console.log(txDate);
 
           return (
             txDate.getMonth() === today.getMonth() &&

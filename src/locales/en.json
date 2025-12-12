@@ -57,5 +57,10 @@
       "totalBalance": "Total balance",
       "averageExpenditure": "Average expenditure"
     }
-  }
+  },
+  "transactionsPage": {
+      "title": "Transactions",
+      "lastTransactions": "Last transaction",
+      "amount": "Amount"
+    }
 }
