@@ -63,5 +63,12 @@
     "lastTransactions": "Dernière transaction",
     "amount": "Montant",
     "transactionDeleted": "Transaction supprimée !"
+  },
+  "settings": {
+    "settings": "Paramètres",
+    "darkMode": "Mode sombre",
+    "languages": "Langues",
+    "french": "Français",
+    "english": "Anglais"
   }
 }

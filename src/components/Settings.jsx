@@ -1,19 +1,21 @@
 import { useContext, useState } from "react";
 import { AppThemeContext } from "../contexts/MyThemeContext";
 import i18n from "../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Settings() {
   const { theme, setTheme } = useContext(AppThemeContext);
   const [currentLang, setCurrentLang] = useState("fr");
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col max-w-md w-full mx-auto">
       <h2 className="font-semibold text-3xl text-center mb-4 dark:text-white">
-        Paramètres
+        {t("settings.settings")}
       </h2>
       <div className="border-2 border-gray-300 rounded-xl bg-white dark:bg-gray-800 dark:text-gray-100 p-4">
         <div className="flex items-center justify-between gap-3 border-b border-b-gray-300 py-3">
-          <span className="text-lg font-semibold">Mode sombre</span>
+          <span className="text-lg font-semibold">{t("settings.darkMode")}</span>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
@@ -28,7 +30,7 @@ export default function Settings() {
 
         <div className="flex items-center justify-between gap-3 border-b border-b-gray-300 py-3">
           <label className="relative text-lg font-semibold inline-flex items-center cursor-pointer">
-            Langues
+            {t("settings.languages")}
           </label>
           <select
             value={currentLang}
@@ -38,8 +40,8 @@ export default function Settings() {
             }}
             className="outline-none p-2 border-2 border-gray-300 rounded-xl focus:border-2 focus:border-purple-600 dark:bg-gray-800"
           >
-            <option value="fr">Français</option>
-            <option value="en">Anglais</option>
+            <option value="fr">{t("settings.french")}</option>
+            <option value="en">{t("settings.english")}</option>
           </select>
         </div>
       </div>
