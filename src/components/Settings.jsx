@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Settings() {
   const { theme, setTheme } = useContext(AppThemeContext);
-  const [currentLang, setCurrentLang] = useState("fr");
+  const [currentLang, setCurrentLang] = useState(i18n.language || "fr");
   const { t } = useTranslation();
 
   return (
@@ -15,7 +15,9 @@ export default function Settings() {
       </h2>
       <div className="border-2 border-gray-300 rounded-xl bg-white dark:bg-gray-800 dark:text-gray-100 p-4">
         <div className="flex items-center justify-between gap-3 border-b border-b-gray-300 py-3">
-          <span className="text-lg font-semibold">{t("settings.darkMode")}</span>
+          <span className="text-lg font-semibold">
+            {t("settings.darkMode")}
+          </span>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
