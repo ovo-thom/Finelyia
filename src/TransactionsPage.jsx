@@ -33,7 +33,7 @@ export default function TransactionsPage() {
       <div className="bg-white rounded-xl border-2 border-gray-300 p-4 dark:bg-gray-800 dark:text-white">
         <TransactionsTable
           showDelete={true}
-          onDelete={() => toast.error("Transaction supprimée !")}
+          onDelete={() => toast.error(t("transactionsPage.transactionDeleted"))}
         />
       </div>
       <div className="w-full rounded-xl mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">

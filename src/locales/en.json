@@ -59,8 +59,9 @@
     }
   },
   "transactionsPage": {
-      "title": "Transactions",
-      "lastTransactions": "Last transaction",
-      "amount": "Amount"
-    }
+    "title": "Transactions",
+    "lastTransactions": "Last transaction",
+    "amount": "Amount",
+    "transactionDeleted": "Transaction deleted !"
+  }
 }

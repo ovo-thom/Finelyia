@@ -61,6 +61,7 @@
   "transactionsPage": {
     "title": "Transactions",
     "lastTransactions": "Dernière transaction",
-    "amount": "Montant"
+    "amount": "Montant",
+    "transactionDeleted": "Transaction supprimée !"
   }
 }
