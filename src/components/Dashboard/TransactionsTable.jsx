@@ -179,10 +179,10 @@ export default function TransactionsTable({ showDelete, onDelete }) {
           {filteredTransactions.map((transaction) => (
             <div
               key={transaction.id}
-              className="bg-white rounded-xl shadow border border-gray-200 p-3 flex flex-col"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 p-3 flex flex-col"
             >
               <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold text-gray-700">
+                <span className="font-semibold dark:text-white text-gray-700">
                   {transaction.date}
                 </span>
                 {showDelete && (
@@ -196,19 +196,19 @@ export default function TransactionsTable({ showDelete, onDelete }) {
               </div>
               <div className="flex flex-col gap-1">
                 <div>
-                  <span className="text-xs text-gray-500 mr-1">
+                  <span className="text-xs text-gray-500 dark:text-gray-300 mr-1 ">
                     {t("dashboard.transactionsTable.description")}:{" "}
                   </span>
                   <span className="font-medium">{transaction.description}</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 mr-1">
+                  <span className="text-xs text-gray-500 dark:text-gray-300 mr-1">
                     {t("dashboard.transactionsTable.category")}:{" "}
                   </span>
                   <span className="font-medium">{transaction.categorie}</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 mr-1">
+                  <span className="text-xs text-gray-500 dark:text-gray-300 D mr-1">
                     {t("dashboard.transactionsTable.amount")}:{" "}
                   </span>
                   <span
