@@ -199,13 +199,13 @@ export default function TransactionsTable({ showDelete, onDelete }) {
                   <span className="text-xs text-gray-500 dark:text-gray-300 mr-1 ">
                     {t("dashboard.transactionsTable.description")}:{" "}
                   </span>
-                  <span className="font-medium">{transaction.description}</span>
+                  <span className="font-medium dark:text-white">{transaction.description}</span>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500 dark:text-gray-300 mr-1">
                     {t("dashboard.transactionsTable.category")}:{" "}
                   </span>
-                  <span className="font-medium">{transaction.categorie}</span>
+                  <span className="font-medium dark:text-white">{transaction.categorie}</span>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500 dark:text-gray-300 D mr-1">
