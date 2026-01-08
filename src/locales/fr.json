@@ -70,5 +70,10 @@
     "languages": "Langues",
     "french": "Français",
     "english": "Anglais"
+  },
+  "immersionModal": {
+    "title": "Pour une meilleure immersion",
+    "message": "Pour profiter pleinement de Finelyia et accéder à toutes les fonctionnalités, veuillez vous inscrire ou vous connecter.",
+    "cta": "S'inscrire / Se connecter"
   }
 }

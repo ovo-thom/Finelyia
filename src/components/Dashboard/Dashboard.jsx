@@ -3,17 +3,32 @@ import TransactionsTable from "./TransactionsTable";
 import StatCard from "./StatCard";
 import { useTransactions } from "../../contexts/TransactionsContext";
 import AddTransactionButton from "../AddTransactionButton";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../Auth/AuthContext";
 import { useTranslation } from "react-i18next";
+import ImmersionModal from "../ImmersionModal";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
   const { user } = useContext(AuthContext);
   const { t } = useTranslation();
+  const [showImmersion, setShowImmersion] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      const alreadyShown = localStorage.getItem("immersionModalShown");
+      if (!alreadyShown) {
+        setShowImmersion(true);
+      }
+    }
+  }, [user]);
+
+  const handleCloseImmersion = () => {
+    setShowImmersion(false);
+    localStorage.setItem("immersionModalShown", "true");
+  };
 
   const transactionsToDisplay = user ? transactions : [];
-
   const total = transactionsToDisplay.reduce(
     (sum, tx) => sum + Number(tx.montant),
     0
@@ -27,39 +42,44 @@ export default function Dashboard() {
     : 0;
 
   return (
-    <div className="max-w-6xl w-full mx-auto px-4">
-      <div className="flex justify-end mb-6">
-        <AddTransactionButton />
+    <>
+      {showImmersion && !user && (
+        <ImmersionModal onClose={handleCloseImmersion} />
+      )}
+      <div className="max-w-6xl w-full mx-auto px-4">
+        <div className="flex justify-end mb-6">
+          <AddTransactionButton />
+        </div>
+        <h2 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6 dark:text-white">
+          {t("dashboard.title")}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-10 md:grid-rows-10 gap-8">
+          <div className="border-2 border-gray-300 md:col-span-6 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
+            <TransactionsTable showDelete={false} />
+          </div>
+          <div className="border-2 border-gray-300 md:col-span-4 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
+            <CategoryChart />
+          </div>
+          <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
+            <StatCard
+              title={t("dashboard.statCard.totalBalance")}
+              value={total.toLocaleString("fr-FR", {
+                style: "currency",
+                currency: "EUR",
+              })}
+            />
+          </div>
+          <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
+            <StatCard
+              title={t("dashboard.statCard.averageExpenditure")}
+              value={average.toLocaleString("fr-FR", {
+                style: "currency",
+                currency: "EUR",
+              })}
+            />
+          </div>
+        </div>
       </div>
-      <h2 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6 dark:text-white">
-        {t("dashboard.title")}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-10 md:grid-rows-10 gap-8">
-        <div className="border-2 border-gray-300 md:col-span-6 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
-          <TransactionsTable showDelete={false} />
-        </div>
-        <div className="border-2 border-gray-300 md:col-span-4 md:row-span-7 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
-          <CategoryChart />
-        </div>
-        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
-          <StatCard
-            title={t("dashboard.statCard.totalBalance")}
-            value={total.toLocaleString("fr-FR", {
-              style: "currency",
-              currency: "EUR",
-            })}
-          />
-        </div>
-        <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full dark:bg-gray-800">
-          <StatCard
-            title={t("dashboard.statCard.averageExpenditure")}
-            value={average.toLocaleString("fr-FR", {
-              style: "currency",
-              currency: "EUR",
-            })}
-          />
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

@@ -70,5 +70,10 @@
     "languages": "Languages",
     "french": "French",
     "english": "English"
+  },
+  "immersionModal": {
+    "title": "For a better experience",
+    "message": "To fully enjoy Finelyia and access all features, please sign up or log in.",
+    "cta": "Sign up / Log in"
   }
 }
