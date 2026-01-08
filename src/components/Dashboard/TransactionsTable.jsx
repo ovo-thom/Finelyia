@@ -7,11 +7,13 @@ import { useTranslation } from "react-i18next";
 export default function TransactionsTable({ showDelete, onDelete }) {
   const { user } = useContext(AuthContext);
   const { transactions, deleteTransaction } = useTransactions();
-  const [period, setPeriod] = useState("Ce mois-ci");
+  const [period, setPeriod] = useState("Toute les transactions");
   const { t } = useTranslation();
 
   const filterTransactions = (transactions, period) => {
     const today = new Date();
+
+    if (period === t("dashboard.transactionsTable.all")) return transactions;
 
     switch (period) {
       case "Aujourd'hui":
@@ -97,6 +99,7 @@ export default function TransactionsTable({ showDelete, onDelete }) {
         onChange={(e) => setPeriod(e.target.value)}
         className="border-2 border-gray-300 px-3 py-2 w-36 md:w-56 rounded-lg ml-5 mt-5 outline-none focus:border-violet-500 bg-white dark:text-white dark:bg-gray-800"
       >
+        <option>{t("dashboard.transactionsTable.all")}</option>
         <option>{t("dashboard.transactionsTable.thisMonth")}</option>
         <option>{t("dashboard.transactionsTable.today")}</option>
         <option>{t("dashboard.transactionsTable.thisWeek")}</option>
@@ -199,13 +202,17 @@ export default function TransactionsTable({ showDelete, onDelete }) {
                   <span className="text-xs text-gray-500 dark:text-gray-300 mr-1 ">
                     {t("dashboard.transactionsTable.description")}:{" "}
                   </span>
-                  <span className="font-medium dark:text-white">{transaction.description}</span>
+                  <span className="font-medium dark:text-white">
+                    {transaction.description}
+                  </span>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500 dark:text-gray-300 mr-1">
                     {t("dashboard.transactionsTable.category")}:{" "}
                   </span>
-                  <span className="font-medium dark:text-white">{transaction.categorie}</span>
+                  <span className="font-medium dark:text-white">
+                    {transaction.categorie}
+                  </span>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500 dark:text-gray-300 D mr-1">

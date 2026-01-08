@@ -38,6 +38,7 @@
     },
     "title": "Personal finance dashboard",
     "transactionsTable": {
+      "all": "All transactions",
       "thisMonth": "This month",
       "today": "Today",
       "thisWeek": "This week",

@@ -38,6 +38,7 @@
     },
     "title": "Tableau de bord des finances personnelles",
     "transactionsTable": {
+      "all": "Toute les transactions",
       "thisMonth": "Ce mois-ci",
       "today": "Aujourd'hui",
       "thisWeek": "Cette semaine",
