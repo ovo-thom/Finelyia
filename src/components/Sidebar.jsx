@@ -3,8 +3,11 @@ import { HiOutlineDocumentText } from "react-icons/hi";
 import { TbSettings } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { AppThemeContext } from "../../src/contexts/MyThemeContext";
 
 export default function Sidebar() {
+  const { theme } = useContext(AppThemeContext);
   const location = useLocation();
   const { t } = useTranslation();
 
@@ -12,7 +15,11 @@ export default function Sidebar() {
     <aside
       role="navigation"
       aria-label="Main navigation"
-      className="min-h-screen w-20 md:w-72 bg-gradient-to-b from-[#4b2bc2] via-[#7e21c9] to-[#9f1dd9]"
+      className={
+        theme === "dark"
+          ? "min-h-screen w-20 md:w-72 bg-gradient-to-b from-[#2a1659] via-[#3b1b6f] to-[#4a1d85]"
+          : "min-h-screen w-20 md:w-72 bg-gradient-to-b from-[#4b2bc2] via-[#7e21c9] to-[#9f1dd9]"
+      }
     >
       <div className="w-3/4 mx-auto mt-5">
         <h1
